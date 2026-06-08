@@ -140,14 +140,27 @@ if (form) {
     const serviceSelect = document.getElementById('service-select');
     const service = serviceSelect.options[serviceSelect.selectedIndex].text;
     const message = document.getElementById('message').value.trim();
+    // Build WhatsApp message
+    let text = `Здравствуйте! Новая заявка с сайта:\n\n`;
+    text += `👤 Имя: ${name}\n`;
+    text += `📞 Телефон: ${phone}\n`;
+    if (serviceSelect.value) {
+      text += `🔧 Услуга: ${service}\n`;
+    }
+    if (message) {
+      text += `💬 Сообщение: ${message}\n`;
+    }
 
-    const serverUrl = 'http://localhost:3000/api/send-message';
-    
+    const whatsappNumber = '77079208087'; // Номер получателя
+
+    const apiUrl = 'https://7107.api.greenapi.com';
+    const idInstance = '7107646294';
+    const apiTokenInstance = 'b41f0d1414e941759d81c5c04c66e2465ec101ed6ea142e0a5';
+    const url = `${apiUrl}/waInstance${idInstance}/sendMessage/${apiTokenInstance}`;
+
     const payload = {
-      name: name,
-      phone: phone,
-      service: serviceSelect.value ? service : null,
-      message: message
+      chatId: `${whatsappNumber}@c.us`,
+      message: text
     };
 
     const btn = form.querySelector('.form-submit');
@@ -158,7 +171,7 @@ if (form) {
     btn.innerHTML = `Отправка... ${spinnerSvg}`;
     btn.disabled = true;
 
-    fetch(serverUrl, {
+    fetch(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
