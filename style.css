@@ -855,6 +855,10 @@ ul {
   border: none;
   cursor: pointer;
   transition: var(--transition);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .form-submit:hover:not(:disabled) {
@@ -867,6 +871,13 @@ ul {
   cursor: not-allowed;
   transform: none;
   box-shadow: none;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+.spin-icon {
+  animation: spin 1s linear infinite;
 }
 
 /* ===== FOOTER ===== */

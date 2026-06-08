@@ -142,7 +142,7 @@ if (form) {
     const message = document.getElementById('message').value.trim();
 
     // Build WhatsApp message
-    let text = `Здравствуйте! Новая заявка с сайта:\n\n`;
+    let text = `Новая заявка с сайта:\n\n`;
     text += `👤 Имя: ${name}\n`;
     text += `📞 Телефон: ${phone}\n`;
     if (serviceSelect.value) {
@@ -155,8 +155,8 @@ if (form) {
     const whatsappNumber = '77079208087'; // Номер получателя
 
     const apiUrl = 'https://7107.api.greenapi.com';
-    const idInstance = '7107646184';
-    const apiTokenInstance = '390304387f3b4eca9b866337c2a002e0ffd40bdbb7554574bd';
+    const idInstance = '7107646294';
+    const apiTokenInstance = 'b41f0d1414e941759d81c5c04c66e2465ec101ed6ea142e0a5';
     const url = `${apiUrl}/waInstance${idInstance}/sendMessage/${apiTokenInstance}`;
 
     const payload = {
@@ -165,7 +165,11 @@ if (form) {
     };
 
     const btn = form.querySelector('.form-submit');
-    btn.textContent = 'Отправка... ⏳';
+    const spinnerSvg = `<svg class="spin-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-6.219-8.56"/></svg>`;
+    const checkSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>`;
+    const errorSvg = `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>`;
+
+    btn.innerHTML = `Отправка... ${spinnerSvg}`;
     btn.disabled = true;
 
     fetch(url, {
@@ -177,7 +181,7 @@ if (form) {
     })
       .then(response => {
         if (response.ok) {
-          btn.textContent = 'Отправлено ✓';
+          btn.innerHTML = `Отправлено ${checkSvg}`;
           btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
           form.reset();
           // Reset custom select if exists
@@ -193,12 +197,12 @@ if (form) {
       })
       .catch(error => {
         console.error('Error:', error);
-        btn.textContent = 'Ошибка ❌';
+        btn.innerHTML = `Ошибка ${errorSvg}`;
         btn.style.background = 'linear-gradient(135deg, #ef4444, #dc2626)';
       })
       .finally(() => {
         setTimeout(() => {
-          btn.textContent = 'Оставить заявку';
+          btn.innerHTML = 'Оставить заявку';
           btn.style.background = '';
           btn.disabled = false;
         }, 3000);
