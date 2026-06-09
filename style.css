@@ -880,6 +880,184 @@ ul {
   animation: spin 1s linear infinite;
 }
 
+/* ===== IN-PAGE BACK BUTTON ===== */
+.page-back-wrapper {
+  position: absolute;
+  top: 100px;
+  left: 30px;
+  z-index: 100;
+}
+
+@media (max-width: 768px) {
+  .page-back-wrapper {
+    top: 90px;
+    left: 16px;
+  }
+}
+
+.page-back-btn {
+  width: 44px;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-primary);
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.page-back-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateX(-3px);
+  border-color: var(--accent);
+}
+
+/* ===== PROJECTS PAGE ===== */
+.projects-hero {
+  padding: 180px 0 80px;
+  text-align: center;
+  background: radial-gradient(circle at center, rgba(0, 212, 255, 0.05) 0%, transparent 70%);
+}
+
+.featured-case {
+  margin-bottom: 80px;
+}
+
+.case-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 24px;
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.case-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+
+.case-card.featured {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+  padding: 60px;
+  background: linear-gradient(135deg, var(--bg-card), rgba(99, 102, 241, 0.05));
+}
+
+.case-logo-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 30px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.case-logo {
+  max-width: 180px;
+  height: auto;
+  filter: brightness(1.2);
+}
+
+.case-logo.kazatomprom {
+  max-width: 250px;
+}
+
+.case-content {
+  flex: 1;
+}
+
+.case-badge {
+  display: inline-block;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  margin-bottom: 16px;
+}
+
+.case-content h2 {
+  font-size: 2.2rem;
+  margin-bottom: 16px;
+}
+
+.case-content h3 {
+  font-size: 1.4rem;
+  margin-bottom: 12px;
+}
+
+.case-description {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  margin-bottom: 24px;
+}
+
+.case-details {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.case-details li {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.03);
+}
+
+.detail-icon {
+  color: var(--accent);
+  margin-top: 2px;
+}
+
+.detail-text {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.detail-text strong {
+  color: var(--text-primary);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 30px;
+  margin-bottom: 80px;
+}
+
+.cases-grid .case-card {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+.cases-grid .case-logo-wrapper {
+  border-radius: 0;
+  border-bottom: 1px solid var(--border);
+  height: 200px;
+}
+
+.cases-grid .case-content {
+  padding: 30px;
+}
+
 /* ===== FOOTER ===== */
 .footer {
   background: var(--bg-secondary);
@@ -1049,6 +1227,14 @@ ul {
 
   .services-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .case-card.featured {
+    flex-direction: column;
+    padding: 30px;
+  }
+  .case-logo.kazatomprom {
+    max-width: 200px;
   }
 }
 
